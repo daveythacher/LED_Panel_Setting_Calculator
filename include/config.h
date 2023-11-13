@@ -1,10 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-// TODO: Add in S-PWM on 16 bit space where lower 4 bits are allowed to flicker.
-//  These bits would likely be used for dot correction, which should allow over 90% accuracy.
-//      In theory we could support up to 20 or 22 bit space.
-//  S-PWM complicates things.
+// TODO: Add in S-PWM
 
 // Panel constants
 constexpr float max_clk_mhz = 25.0;
