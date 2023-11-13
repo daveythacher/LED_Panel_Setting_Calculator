@@ -30,9 +30,9 @@ constexpr uint8_t frames_per_second = 30;
 
 // Search parameters
 constexpr uint8_t min_bpp_bits = 1;             // Range: 1 to max_grayscale_bits
-constexpr uint16_t target_cols = 0;
-constexpr uint16_t target_refresh = 0;
-constexpr uint8_t target_scan = 0;
-constexpr bool showAll = false;
+constexpr uint16_t target_cols = 0;             // To exclude parameter for filter set to zero
+constexpr uint16_t target_refresh = 0;          // To exclude parameter for filter set to zero
+constexpr uint8_t target_scan = 0;              // To exclude parameter for filter set to zero
+constexpr bool showAll = false;                 // By default will only show valid HUB75 chains
 
 #endif
