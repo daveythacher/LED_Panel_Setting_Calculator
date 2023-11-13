@@ -1,3 +1,4 @@
+#include <iostream>
 #include "helper.h"
 
 int main(int argc, char **argv) {
@@ -16,6 +17,8 @@ int main(int argc, char **argv) {
         scan_high = target_scan;
     }
 
+    std::cout << "Valid results will be shown below: " << std::endl;
+
     switch (LED_driver_generation) {
         case 1:
             process_gen1();
@@ -28,6 +31,8 @@ int main(int argc, char **argv) {
         default:
             break;
     }
+
+    std::cout << result_counter << " Results found" << std::endl;
 
     return 0;
 }
