@@ -1,6 +1,5 @@
 #include <algorithm>
 #include "helper.h"
-#include "config.h"
 
 static bool is_clk_valid(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits) {
     uint64_t temp = cols / columns_per_driver;

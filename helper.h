@@ -2,15 +2,14 @@
 #define HELPER_H
 
 #include <stdint.h>
-#include "helper.h"
+#include "config.h"
 
 void process_gen1();
 void process_gen2();
 void process_gen3();
+
 uint8_t get_max_dot_correction_bits();
 void print_result(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits);
-void init();
-
 
 extern uint16_t cols_low;
 extern uint16_t cols_high;
