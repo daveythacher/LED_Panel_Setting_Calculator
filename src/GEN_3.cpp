@@ -18,7 +18,7 @@ static bool is_gclk_valid(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t
     float hz_limit = 1000000.0 / (temp * 1.0);
     hz_limit = std::min(max_gclk_mhz, hz_limit) * 1000000;
     *gclk_mhz = hz_limit / 1000000.0;
-    hz_limit /= refresh * (1.0 + refresh_overhead) * scan * (1 << (bits + get_min_dot_correction_bits()));
+    hz_limit /= refresh * get_refresh_overhead(scan, refresh) * scan * (1 << (bits + get_min_dot_correction_bits()));
     *gclk_mhz /= hz_limit;
     return hz_limit >= 1.0;
 }

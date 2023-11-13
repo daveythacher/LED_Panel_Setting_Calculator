@@ -22,6 +22,12 @@ uint8_t get_min_dot_correction_bits() {
     return 0;
 }
 
+float get_refresh_overhead(uint8_t scan, uint16_t refresh) {
+    float refresh_overhead = 1000000.0 / (scan * refresh);
+    refresh_overhead /= refresh_overhead - blank_time_us;
+    return refresh_overhead;
+}
+
 void print_result(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits, float clk_mhz, float gclk_mhz) {
     std::cout << "\t Columns: " << cols;
     std::cout << "\t Scan: " << (int) scan;
