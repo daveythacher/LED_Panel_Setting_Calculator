@@ -26,5 +26,6 @@ void print_result(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits) {
     std::cout << " - Pixels " << scan * 2 * cols;
     std::cout << " - " << scan * 2 << "x" << cols;
     std::cout << " - Refresh " << refresh;
-    std::cout << " - Bits per color " << (int) bits << std::endl;
+    std::cout << " - Bits per color " << (int) bits;
+    std::cout << "\t - Steps per LED " << (1 << (get_min_dot_correction_bits() + bits)) * scan << std::endl;
 }
