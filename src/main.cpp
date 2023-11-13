@@ -17,7 +17,8 @@ int main(int argc, char **argv) {
         scan_high = target_scan;
     }
 
-    std::cout << "Valid results will be shown below: " << std::endl;
+    std::cout << "Valid results will be shown below: (LED Driver Generation ";
+        std::cout << (int) LED_driver_generation << ")" << std::endl;
 
     switch (LED_driver_generation) {
         case 1:

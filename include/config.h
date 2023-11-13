@@ -13,11 +13,11 @@ constexpr uint8_t max_par_cap_pf = 15;
 constexpr uint8_t min_harmonics = 5;
 
 // Application information
-constexpr uint8_t LED_driver_generation = 3;
+constexpr uint8_t LED_driver_generation = 1;
 constexpr bool is12bitTi = false;
 constexpr uint8_t frames_per_second = 30;
 constexpr uint16_t max_refresh_hz = 3000;
-constexpr float min_dot_correction_accuracy = 0.9;
+constexpr float min_dot_correction_accuracy = 0.8;
 constexpr float refresh_overhead = 0.3;
 
 
