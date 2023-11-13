@@ -2,19 +2,20 @@
 #define HELPER_H
 
 #include <stdint.h>
-#include "config.h"
+#include "helper.h"
 
-static uint8_t get_max_dot_correction_bits() {
-    float target = 1.0 - max_dot_correction_accuracy;
+void process_gen1();
+void process_gen2();
+void process_gen3();
+uint8_t get_max_dot_correction_bits();
+void print_result(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits);
+void init();
 
-    for (uint8_t i = 1; i <= 7; i++) {
-        float num = 1.0 / (1 << i);
 
-        if (num < target)
-            return i;
-    }
-
-    return 0;
-}
-
+extern uint16_t cols_low;
+extern uint16_t cols_high;
+extern uint16_t refresh_low;
+extern uint16_t refresh_high;
+extern uint8_t scan_low;
+extern uint8_t scan_high;
 #endif

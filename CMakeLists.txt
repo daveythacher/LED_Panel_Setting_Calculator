@@ -9,6 +9,7 @@ add_executable(calc
     ./GEN_1.cpp
     ./GEN_2.cpp
     ./GEN_3.cpp
+    ./helper.cpp
 )
 
 target_compile_options(calc PRIVATE
