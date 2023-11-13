@@ -1,6 +1,11 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+// TODO: Add in S-PWM on 16 bit space where lower 4 bits are allowed to flicker.
+//  These bits would likely be used for dot correction, which should allow over 90% accuracy.
+//      In theory we could support up to 20 or 22 bit space.
+//  S-PWM complicates things.
+
 // Panel constants
 constexpr float max_clk_mhz = 25.0;
 constexpr float max_gclk_mhz = 25.0;
@@ -19,6 +24,7 @@ constexpr uint16_t max_refresh_hz = 3000;
 constexpr uint8_t LED_driver_generation = 1;
 constexpr uint8_t frames_per_second = 30;
 constexpr bool is12bitTi = false;
+constexpr bool isS_PWM = false;
 
 
 // Search parameters
