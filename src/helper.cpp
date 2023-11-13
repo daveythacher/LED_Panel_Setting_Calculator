@@ -26,7 +26,7 @@ uint8_t get_min_dot_correction_bits() {
 float get_refresh_overhead(uint8_t scan, uint16_t refresh, uint8_t bits) {
     float refresh_overhead = 1000000.0 / (scan * refresh);
     if (isS_PWM)
-        refresh_overhead /= 1 << std::max(bits - min_bpp_bits_low + get_min_dot_correction_bits(), 0);
+        refresh_overhead /= 1 << std::max((int16_t) bits - (int16_t) s_pwm_bits_per_seg + (int16_t) get_min_dot_correction_bits(), 0);
     refresh_overhead /= refresh_overhead - blank_time_us;
     return refresh_overhead;
 }
