@@ -59,6 +59,9 @@ int main(int argc, char **argv) {
                         cout << " - Refresh " << refresh;
                         cout << " - Bits per color " << (int) bits << endl;
                     }
+                    else {
+                        break;
+                    }
                 }
             }
         }

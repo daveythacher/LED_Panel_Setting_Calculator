@@ -20,9 +20,9 @@ constexpr float max_dot_correction_accuracy = 0.8;
 constexpr float refresh_overhead = 0.3;
 
 
-constexpr uint16_t target_cols = 8;
-constexpr uint16_t target_refresh = 3000;
-constexpr uint8_t target_scan = 8;
-constexpr bool showAll = true;
+constexpr uint16_t target_cols = 0;
+constexpr uint16_t target_refresh = 0;
+constexpr uint8_t target_scan = 0;
+constexpr bool showAll = false;
 
 #endif
