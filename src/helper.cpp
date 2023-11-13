@@ -7,6 +7,7 @@ uint16_t refresh_low = 100;
 uint16_t refresh_high = max_refresh_hz;
 uint8_t scan_low = 1;
 uint8_t scan_high = 32;
+uint8_t min_bpp_bits_low = min_bpp_bits;
 uint32_t result_counter = 0;
 
 uint8_t get_min_dot_correction_bits() {
@@ -22,8 +23,10 @@ uint8_t get_min_dot_correction_bits() {
     return 0;
 }
 
-float get_refresh_overhead(uint8_t scan, uint16_t refresh) {
+float get_refresh_overhead(uint8_t scan, uint16_t refresh, uint8_t bits) {
     float refresh_overhead = 1000000.0 / (scan * refresh);
+    if (isS_PWM)
+        refresh_overhead /= 1 << (bits - min_bpp_bits_low);
     refresh_overhead /= refresh_overhead - blank_time_us;
     return refresh_overhead;
 }

@@ -17,6 +17,10 @@ int main(int argc, char **argv) {
         scan_high = target_scan;
     }
 
+    if (isS_PWM) {
+        min_bpp_bits_low = s_pwm_bits_per_seg;
+    }
+
     std::cout << "Valid results will be shown below: (LED Driver Generation ";
         std::cout << (int) LED_driver_generation << ")" << std::endl;
 

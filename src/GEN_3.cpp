@@ -18,7 +18,7 @@ static bool is_gclk_valid(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t
     float hz_limit = 1000000.0 / (temp * 1.0);
     hz_limit = std::min(max_gclk_mhz, hz_limit) * 1000000;
     *gclk_mhz = hz_limit / 1000000.0;
-    hz_limit /= refresh * get_refresh_overhead(scan, refresh) * scan * (1 << (bits + get_min_dot_correction_bits()));
+    hz_limit /= refresh * get_refresh_overhead(scan, refresh, bits) * scan * (1 << (bits + get_min_dot_correction_bits()));
     *gclk_mhz /= hz_limit;
     return hz_limit >= 1.0;
 }
@@ -38,7 +38,7 @@ void process_gen3() {
     for (uint16_t cols = cols_low; cols <= cols_high; cols *= 2) {
         for (uint16_t refresh = refresh_low; refresh <= refresh_high; refresh += 100) {
             for (uint8_t scan = scan_low; scan <= scan_high; scan *= 2) {
-                for (uint8_t bits = min_bpp_bits; bits <= max_grayscale_bits; bits++) {
+                for (uint8_t bits = min_bpp_bits_low; bits <= max_grayscale_bits; bits++) {
                     float clk, gclk;
 
                     if ((scan * 2 > cols) && !showAll)

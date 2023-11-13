@@ -1,8 +1,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-// TODO: Add in S-PWM
-
 // Panel constants
 constexpr float max_clk_mhz = 25.0;
 constexpr float max_gclk_mhz = 25.0;
@@ -17,18 +15,24 @@ constexpr float min_dot_correction_accuracy = 0.8;
 constexpr uint8_t blank_time_us = 10;
 constexpr uint16_t max_refresh_hz = 3000;
 
+
 // Application information
-constexpr uint8_t LED_driver_generation = 1;
-constexpr uint8_t frames_per_second = 30;
+constexpr uint8_t LED_driver_generation = 3;
+constexpr bool isS_PWM = true;
+constexpr uint8_t s_pwm_bits_per_seg = 7;
+
+// Application information (Generation 2 only)
 constexpr bool is12bitTi = false;
-constexpr bool isS_PWM = false;
+
+// Application information (Generation 3 only)
+constexpr uint8_t frames_per_second = 30;
 
 
 // Search parameters
 constexpr uint8_t min_bpp_bits = 1;
-constexpr uint16_t target_cols = 32;
+constexpr uint16_t target_cols = 0;
 constexpr uint16_t target_refresh = 3000;
-constexpr uint8_t target_scan = 0;
+constexpr uint8_t target_scan = 4;
 constexpr bool showAll = false;
 
 #endif
