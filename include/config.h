@@ -18,7 +18,7 @@ constexpr uint16_t max_refresh_hz = 3000;
 
 // Application information
 constexpr uint8_t LED_driver_generation = 3;
-constexpr bool isS_PWM = true;
+constexpr bool isS_PWM = true;                  // Required by most Generation 3 LED drivers
 constexpr uint8_t s_pwm_bits_per_seg = 7;
 
 // Application information (Generation 2 only)
@@ -29,10 +29,10 @@ constexpr uint8_t frames_per_second = 30;
 
 
 // Search parameters
-constexpr uint8_t min_bpp_bits = 1;
+constexpr uint8_t min_bpp_bits = 1;             // Range (1 and max_grayscale_bits)
 constexpr uint16_t target_cols = 0;
-constexpr uint16_t target_refresh = 3000;
-constexpr uint8_t target_scan = 4;
+constexpr uint16_t target_refresh = 0;
+constexpr uint8_t target_scan = 0;
 constexpr bool showAll = false;
 
 #endif
