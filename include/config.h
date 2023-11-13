@@ -11,14 +11,14 @@ constexpr uint8_t fanout_per_gclk = 1;
 constexpr uint8_t max_impedance = 50;
 constexpr uint8_t max_par_cap_pf = 15;
 constexpr uint8_t min_harmonics = 5;
+constexpr float min_dot_correction_accuracy = 0.8;
+constexpr uint8_t blank_time_us = 10;
+constexpr uint16_t max_refresh_hz = 3000;
 
 // Application information
 constexpr uint8_t LED_driver_generation = 1;
-constexpr bool is12bitTi = false;
 constexpr uint8_t frames_per_second = 30;
-constexpr uint16_t max_refresh_hz = 3000;
-constexpr float min_dot_correction_accuracy = 0.8;
-constexpr uint8_t blank_time_us = 10;
+constexpr bool is12bitTi = false;
 
 
 // Search parameters
