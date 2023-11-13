@@ -8,7 +8,7 @@ uint16_t refresh_high = max_refresh_hz;
 uint8_t scan_low = 1;
 uint8_t scan_high = 32;
 
-uint8_t get_max_dot_correction_bits() {
+uint8_t get_min_dot_correction_bits() {
     float target = 1.0 - min_dot_correction_accuracy;
 
     for (uint8_t i = 1; i <= 7; i++) {

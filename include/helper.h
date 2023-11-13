@@ -8,7 +8,7 @@ void process_gen1();
 void process_gen2();
 void process_gen3();
 
-uint8_t get_max_dot_correction_bits();
+uint8_t get_min_dot_correction_bits();
 void print_result(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits);
 
 extern uint16_t cols_low;
