@@ -31,17 +31,18 @@ float get_refresh_overhead(uint8_t scan, uint16_t refresh, uint8_t bits) {
     return refresh_overhead;
 }
 
-void print_result(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits, float clk_mhz, float gclk_mhz) {
+void print_result(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits, float clk_mhz, float gclk_mhz, float brightness) {
     std::cout << "\t Columns: " << cols;
     std::cout << "\t Scan: " << (int) scan;
     std::cout << "\t Pixels: " << scan * 2 * cols;
     std::cout << "\t Configuration: " << scan * 2 << "x" << cols;
     std::cout << "\t Refresh: " << refresh;
-    std::cout << "\t Bits per color: " << (int) bits;
-    std::cout << "\t Steps per LED: " << (1 << (get_min_dot_correction_bits() + bits)) * scan;
-    std::cout << "\t Clock (MHz): " << clk_mhz;
+    std::cout << "\t BPP: " << (int) bits;
+    std::cout << "\t Grayscale: " << (1 << (get_min_dot_correction_bits() + bits)) * scan;
+    std::cout << "\t CLK (MHz): " << clk_mhz;
     if (gclk_mhz != 0.0)
-        std::cout << "\t Grayscale Clock (MHz): " << gclk_mhz;
+        std::cout << "\t GCLK (MHz): " << gclk_mhz;
+    std::cout << "\t Brightness: " << brightness;
     std::cout << std::endl;
     ++result_counter;
 }

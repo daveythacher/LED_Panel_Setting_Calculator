@@ -10,7 +10,7 @@ void process_gen3();
 
 float get_refresh_overhead(uint8_t scan, uint16_t refresh, uint8_t bits);
 uint8_t get_min_dot_correction_bits();
-void print_result(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits, float clk_mhz, float gclk_mhz);
+void print_result(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits, float clk_mhz, float gclk_mhz, float brightness);
 
 extern uint16_t cols_low;
 extern uint16_t cols_high;
