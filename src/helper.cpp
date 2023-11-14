@@ -7,7 +7,6 @@ uint16_t refresh_low = 100;
 uint16_t refresh_high = max_refresh_hz;
 uint8_t scan_low = 1;
 uint8_t scan_high = 32;
-uint8_t min_bpp_bits_low = min_bpp_bits;
 uint32_t result_counter = 0;
 
 uint8_t get_min_dot_correction_bits() {

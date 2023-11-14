@@ -17,10 +17,6 @@ int main(int argc, char **argv) {
         scan_high = target_scan;
     }
 
-    if (isS_PWM) {
-        min_bpp_bits_low = std::max((int16_t) s_pwm_bits_per_seg - (int16_t) get_min_dot_correction_bits(), 1);
-    }
-
     std::cout << "Valid results will be shown below: (LED Driver Generation ";
         std::cout << (int) LED_driver_generation << ")" << std::endl;
 

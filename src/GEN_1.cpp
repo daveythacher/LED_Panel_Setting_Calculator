@@ -35,7 +35,7 @@ void process_gen1() {
     // Order of bottlneck: refresh, multiplexing, grayscale, pixels.
     for (uint16_t refresh = refresh_low; refresh <= refresh_high; refresh += 100) {
         for (uint8_t scan = scan_low; scan <= scan_high; scan *= 2) {
-            for (uint8_t bits = min_bpp_bits_low; bits <= max_grayscale_bits; bits++) {
+            for (uint8_t bits = min_bpp_bits; bits <= max_grayscale_bits; bits++) {
                 for (uint16_t cols = cols_low; cols <= cols_high; cols *= 2) {
                     float clk, gclk, brightness;
 

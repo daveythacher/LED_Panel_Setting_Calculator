@@ -18,6 +18,5 @@ extern uint16_t refresh_low;
 extern uint16_t refresh_high;
 extern uint8_t scan_low;
 extern uint8_t scan_high;
-extern uint8_t min_bpp_bits_low;
 extern uint32_t result_counter;
 #endif
