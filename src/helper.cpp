@@ -22,17 +22,6 @@ uint8_t get_min_dot_correction_bits() {
     return 0;
 }
 
-uint8_t weak_log_2(uint8_t num) {
-    uint8_t result = 0;
-
-    while (num > 0) {
-        num >>= 1;
-        result++;
-    }
-
-    return result;
-}
-
 float get_refresh_overhead(uint8_t scan, uint16_t refresh, uint8_t bits) {
     float refresh_overhead = 1000000.0 / (scan * refresh);
     if (isS_PWM)
