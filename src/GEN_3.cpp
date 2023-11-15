@@ -46,7 +46,7 @@ void process_gen3() {
                 for (uint8_t bits = min_bpp_bits; bits <= max_grayscale_bits; bits++) {
                     float clk, gclk, brightness;
 
-                    if ((scan * 2 > cols) && !showAll)
+                    if (((scan * 2) != cols) && ((scan * 4)) != cols && !showAll)
                         continue;
                     else if (is_gen_3_valid(scan, cols, refresh, bits, &clk, &gclk, &brightness))
                         print_result(scan, cols, refresh, bits, clk, gclk, brightness);

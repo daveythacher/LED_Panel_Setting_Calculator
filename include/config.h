@@ -15,7 +15,7 @@ constexpr uint16_t max_refresh_hz = 3000;
 
 
 // LED constants
-constexpr float min_dot_correction_accuracy = 0.96; // Reserve bits for dot correction (optional)
+constexpr float min_dot_correction_accuracy = 0;    // Reserve bits for dot correction (optional)
 constexpr uint16_t max_led_impedance = 500;
 constexpr uint8_t max_led_cap_pf = 15;
 constexpr uint8_t min_led_harmonics = 5;
@@ -38,9 +38,9 @@ constexpr uint8_t frames_per_second = 30;
 
 // Search parameters
 constexpr uint8_t min_bpp_bits = 1;                 // Range: 1 to max_grayscale_bits
-constexpr uint16_t target_cols = 16;                // To exclude parameter from filter set to zero
-constexpr uint16_t target_refresh = 1500;           // To exclude parameter from filter set to zero
-constexpr uint8_t target_scan = 8;                  // To exclude parameter from filter set to zero
+constexpr uint16_t target_cols = 0;                 // To exclude parameter from filter set to zero
+constexpr uint16_t target_refresh = 0;              // To exclude parameter from filter set to zero
+constexpr uint8_t target_scan = 0;                  // To exclude parameter from filter set to zero
 constexpr float target_brightness = 0.7;            // To exclude parameter from filter set to zero
 constexpr bool showAll = false;                     // By default will only show valid HUB75 chains
 

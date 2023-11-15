@@ -39,7 +39,7 @@ void process_gen1() {
                 for (uint16_t cols = cols_low; cols <= cols_high; cols *= 2) {
                     float clk, gclk, brightness;
 
-                    if ((scan * 2 > cols) && !showAll)
+                    if (((scan * 2) != cols) && ((scan * 4)) != cols && !showAll)
                         continue;
                     else if (is_gen_1_valid(scan, cols, refresh, bits, &clk, &gclk, &brightness))
                         print_result(scan, cols, refresh, bits, clk, gclk, brightness);
