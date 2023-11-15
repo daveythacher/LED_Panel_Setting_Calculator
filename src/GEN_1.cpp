@@ -22,9 +22,9 @@ static bool is_gen_1_valid(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_
     *gclk_mhz = 0.0;
 
     if (isBCM)
-        *brightness = (period_us - (led_rise_us * (bits + get_min_dot_correction_bits())) - blank_time_us) / period_us;
+        *brightness = ((period_us / get_refresh_overhead(scan, refresh, bits)) - (led_rise_us * (bits + get_min_dot_correction_bits()))) / period_us;
     else
-        *brightness = (period_us - led_rise_us - blank_time_us) / period_us;
+        *brightness = ((period_us / get_refresh_overhead(scan, refresh, bits)) - led_rise_us) / period_us;
 
     return (is_clk_valid(scan, cols, refresh, bits, clk_mhz) &&
         *brightness > target_brightness &&

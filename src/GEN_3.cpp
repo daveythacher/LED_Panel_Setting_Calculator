@@ -30,7 +30,7 @@ static bool is_grayscale_valid(uint8_t scan, uint16_t cols, uint16_t refresh, ui
 static bool is_gen_3_valid(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t bits, float *clk_mhz, float *gclk_mhz, float *brightness) {
     float led_rise_us = (max_led_impedance * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0;
     float period_us = 1000000.0 / (refresh * scan);
-    *brightness = (period_us - led_rise_us - blank_time_us) / period_us;
+    *brightness = ((period_us / get_refresh_overhead(scan, refresh, bits)) - led_rise_us) / period_us;
 
     return (is_clk_valid(scan, cols, refresh, bits, clk_mhz) &&
         is_gclk_valid(scan, cols, refresh, bits, gclk_mhz) &&
