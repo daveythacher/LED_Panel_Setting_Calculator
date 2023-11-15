@@ -7,7 +7,10 @@ static bool is_clk_valid(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_t 
     float hz_limit = 1000000.0 / (temp * 1.0);
     hz_limit = std::min(max_clk_mhz, hz_limit) * 1000000;
     *clk_mhz = hz_limit / 1000000.0;
-    hz_limit /= refresh * get_refresh_overhead(scan, refresh, bits) * cols * scan * (1 << (bits + get_min_dot_correction_bits()));
+    if (isS_PWM)
+        hz_limit /= refresh * get_refresh_overhead(scan, refresh, bits) * cols * (1 << std::min(bits + get_min_dot_correction_bits() + weak_log_2(scan), (int) s_pwm_bits_per_seg));
+    else
+        hz_limit /= refresh * get_refresh_overhead(scan, refresh, bits) * cols * (1 << (bits + get_min_dot_correction_bits() + weak_log_2(scan)));
     *clk_mhz /= hz_limit;
     return hz_limit >= 1.0;
 }
@@ -28,6 +31,9 @@ static bool is_gen_1_valid(uint8_t scan, uint16_t cols, uint16_t refresh, uint8_
 
     return (is_clk_valid(scan, cols, refresh, bits, clk_mhz) &&
         *brightness > target_brightness &&
+        (isS_PWM ?
+            (refresh / (scan * 2)) > frames_per_second :
+            true) &&
         is_grayscale_valid(scan, cols, refresh, bits));
 }
 

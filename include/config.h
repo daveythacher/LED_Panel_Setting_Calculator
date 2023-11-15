@@ -22,19 +22,17 @@ constexpr uint8_t min_led_harmonics = 5;
 
 
 // Application information
-constexpr uint8_t LED_driver_generation = 2;
+constexpr uint8_t LED_driver_generation = 1;
 constexpr uint16_t max_grayscale_bits = 12;
-constexpr bool isS_PWM = false;                     // Required by most Generation 3 LED drivers and some Generation 2 LED Drivers
-constexpr uint8_t s_pwm_bits_per_seg = 8;
+constexpr bool isS_PWM = true;                     // Required by most Generation 3 LED drivers and some Generation 2 LED Drivers
+constexpr uint8_t s_pwm_bits_per_seg = 7;
+constexpr uint8_t frames_per_second = 30;
 
 // Application information (Generation 1 only)
-constexpr bool isBCM = false;
+constexpr bool isBCM = true;
 
 // Application information (Generation 2 only)
 constexpr bool is12bitTi = true;
-
-// Application information (Generation 3 only)
-constexpr uint8_t frames_per_second = 30;
 
 
 // Search parameters
