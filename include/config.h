@@ -57,4 +57,16 @@ constexpr bool showAll = false;                     // By default will only show
     Generation 1 LED drivers can change the PWM counter in software and therefore never need S-PWM.
 */
 
+/*
+    Studies have suggested that a refresh rate of at least 90Hz be used, however some people are 
+        still capable of seeing flicker at this range.
+
+    Stroboscopic effect is noted to be visible at very high frequencies requiring refresh rates
+        as high as 1500 to 3000Hz.
+
+    Cameras with fast shutters are capable of seeing lower refresh rates, but this generally
+        reduces the amount of color depth available. Note the image shown may be not be lit
+        evenly or accurate capture the image shown by the camera operator.
+*/
+
 #endif
