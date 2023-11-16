@@ -7,10 +7,10 @@ constexpr float max_gclk_mhz = 33.0;
 constexpr uint8_t columns_per_driver = 16;
 constexpr uint8_t fanout_per_clk = 6;
 constexpr uint8_t fanout_per_gclk = 1;
-constexpr uint8_t max_impedance = 50;
-constexpr uint8_t max_par_cap_pf = 15;
+constexpr uint8_t max_impedance = 50;               // For longer chains may need custom circuit board which adjusts this
+constexpr uint8_t max_par_cap_pf = 16;              // For longer chains may need custom circuit board which adjusts this
 constexpr uint8_t min_harmonics = 5;
-constexpr uint8_t blank_time_us = 10;
+constexpr uint8_t blank_time_us = 1;                // For high refresh rate you may need to increase this
 constexpr uint16_t max_refresh_hz = 3000;
 
 
