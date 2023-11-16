@@ -33,6 +33,8 @@ constexpr bool isBCM = false;
 
 // Application information (Generation 2 only)
 constexpr bool is12bitTi = true;
+
+// Application informtation (Generation 3 only)
 constexpr uint8_t frames_per_second = 30;
 
 
