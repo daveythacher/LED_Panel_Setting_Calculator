@@ -17,7 +17,7 @@ class GEN_3 extends Panel_Calculator {
         double hz_limit = 1000000.0 / (temp * 1.0);
         hz_limit = Math.min(max_clk_mhz, hz_limit) * 1000000;
         clk_mhz = hz_limit / 1000000.0;
-        hz_limit /= frames_per_second * cols * scan * 16;
+        hz_limit /= frames_per_second * 2 * cols * scan * 16;
         clk_mhz /= hz_limit;
         return hz_limit >= 1.0;
     }

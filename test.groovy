@@ -14,18 +14,20 @@ int refresh = 0;
 short bits = 0;
 
 def print_result(short scan, int cols, int refresh, short bits, double clk_mhz, double gclk_mhz, double brightness, short dc) {
-    print "\t Columns: " << cols;
-    print "\t Scan: " << (int) scan;
-    print "\t Pixels: " << scan * 2 * cols;
-    print "\t Configuration: " << scan * 2 << "x" << cols;
-    print "\t Refresh: " << refresh;
-    print "\t BPP: " << (int) bits;
-    print "\t Grayscale: " << (1 << (dc + bits)) * scan;
-    print "\t CLK (MHz): " << clk_mhz;
-    if (gclk_mhz != 0.0)
-        print "\t GCLK (MHz): " << gclk_mhz;
-    print "\t Brightness: " << brightness << "\n";
-    ++result_counter;
+    if ((scan * 2) <= cols) {
+        print "\t Columns: " << cols;
+        print "\t Scan: " << (int) scan;
+        print "\t Pixels: " << scan * 2 * cols;
+        print "\t Configuration: " << scan * 2 << "x" << cols;
+        print "\t Refresh: " << refresh;
+        print "\t BPP: " << (int) bits;
+        print "\t Grayscale: " << (1 << (dc + bits)) * scan;
+        print "\t CLK (MHz): " << clk_mhz;
+        if (gclk_mhz != 0.0)
+            print "\t GCLK (MHz): " << gclk_mhz;
+        print "\t Brightness: " << brightness << "\n";
+        ++result_counter;
+    }
 }
 
 def process_scan() {

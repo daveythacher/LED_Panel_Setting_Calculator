@@ -33,7 +33,7 @@ abstract class Panel_Calculator {
     public double max_gclk_mhz = 33.0;
     public short columns_per_driver = 16;
     public short fanout_per_clk = 6;
-    public short fanout_per_gclk = 1;
+    public short fanout_per_gclk = 6;
     public short max_impedance = 50;                   // For longer chains may need custom circuit board which adjusts this
     public short max_par_cap_pf = 16;                  // For longer chains may need custom circuit board which adjusts this
     public short min_harmonics = 5;
