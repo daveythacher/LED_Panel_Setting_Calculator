@@ -1,4 +1,4 @@
-import LED_Panel_Setting_Calculator.*
+package LED_Panel_Setting_Calculator
 
 LED_driver_generation = 1;
 result_counter = 0;

@@ -1,4 +1,4 @@
-package LED_Panel_Setting_Calculator;
+package LED_Panel_Setting_Calculator
 
 class GEN_2 extends Panel_Calculator {
     public boolean is_valid(short scan, int cols, int refresh, short bits) {
