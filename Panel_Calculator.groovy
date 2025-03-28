@@ -36,7 +36,7 @@ abstract class Panel_Calculator {
     public short fanout_per_gclk = 6;
     public short max_impedance = 50;                   // For longer chains may need custom circuit board which adjusts this
     public short max_par_cap_pf = 16;                  // For longer chains may need custom circuit board which adjusts this
-    public short min_harmonics = 5;
+    public short min_harmonics = 10;                   // This should be at least 10 for square waves
     public short blank_time_us = 1;                    // For high refresh rate you may need to increase thi
 
     // LED constants
