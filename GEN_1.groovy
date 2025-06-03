@@ -1,35 +1,59 @@
 package LED_Panel_Setting_Calculator
 
 class GEN_1 extends Panel_Calculator {
+    // Check multiplex, PMOS(s), driver(s) and LED array
     public boolean is_valid(short scan, int cols, int refresh, short bits) {
-        double led_rise_us = (max_led_impedance * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0;
+        double led_rise_us = (
+            // Low side capacitors (Thru LEDs)
+            (max_led_column_impedance * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0 +
+            // High side capacitors
+            (max_led_column_pullup * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0
+        );
+        double led_fall_us = Math.max(
+            // Low side capacitors (Thru LEDs)
+            (max_led_row_impedance * min_led_harmonics * max_led_cap_pf * cols) / 1000000.0,
+            // High side capacitors
+            (max_led_row_pulldown * min_led_harmonics * max_led_cap_pf * cols) / 1000000.0,
+        );
         double period_us = 1000000.0 / (refresh * scan);
+        brightness = period_us / (period_us + led_rise_us + led_fall_us);
         gclk_mhz = 0.0;
+        clk_mhz = 0.0;
 
-        if (isBCM)
-            brightness = ((period_us / get_refresh_overhead(scan, refresh, bits, false)) - (led_rise_us * (bits + get_min_dot_correction_bits()))) / period_us;
-        else
-        brightness = ((period_us / get_refresh_overhead(scan, refresh, bits, false)) - led_rise_us) / period_us;
-
-        return (is_clk_valid(scan, cols, refresh, bits) &&
-            is_grayscale_valid(scan, cols, refresh, bits));
+        return is_clk_valid(scan, cols, refresh, bits, brightness) &&
+            is_multiplex_valid(scan, refresh) &&
+            brightness >= 0.25;
     }
 
-    private boolean is_clk_valid(short scan, int cols, int refresh, short bits) {
+    // Check multiplexer and PMOS
+    private boolean is_multiplex_valid(short scan, int refresh) {
+        double clock_period_us = 1000000.0 / scan * refresh;
+        double multiplex_rise_us = max_multiplex_charge_impedance * max_multiplex_gate_pf * min_multiplex_harmonics / 1000000.0;
+        double multiplex_fall_us = max_multiplex_discharge_impedance * max_multiplex_gate_pf * min_multiplex_harmonics / 1000000.0;
+
+        return (multiplex_fall_us + multiplex_fall_us) < clock_period_us;
+    }
+
+    // Check Driver communications
+    private boolean is_clk_valid(short scan, int cols, int refresh, short bits, double dimming) {
+        // Calculate number of LED drivers in series.
         double temp = cols / columns_per_driver;
+        // Calculate the cutoff period including subharmonics.
         temp *= max_impedance * fanout_per_clk * min_harmonics * max_par_cap_pf;
-        double hz_limit = 1000000.0 / (temp * 1.0);
-        hz_limit = Math.min(max_clk_mhz, hz_limit) * 1000000;
+
+        // Calculate the max driver frequency
+        double hz_limit = 1000000000000.0 / (temp * 1.0);
+        hz_limit = Math.min(max_clk_mhz * 1000000.0, hz_limit);
         clk_mhz = hz_limit / 1000000.0;
-        hz_limit /= refresh * get_refresh_overhead(scan, refresh, bits, false) * cols * scan * (1 << (bits + get_min_dot_correction_bits()));
-        clk_mhz /= hz_limit;
+
+        // Adjust the max driver frequency using settings
+        hz_limit /= refresh;
+        hz_limit /= cols;
+        hz_limit /= scan;
+        hz_limit /= (1 << bits);
+        hz_limit *= dimming;
+
+        // True, if a valid driver frequency was found
         return hz_limit >= 1.0;
     }
-
-    private boolean is_grayscale_valid(short scan, int cols, int refresh, short bits) {
-        return ((1 << max_grayscale_bits) / ((1 << (bits + get_min_dot_correction_bits())) * scan)) >= 1;
-    }
-
-    public boolean isBCM = false;
-    public int max_grayscale_bits = 12;
 }

@@ -87,7 +87,7 @@ def process_gen() {
         case 1:
             def calc = new GEN_1();
             if (calc.is_valid((short) scan, cols, refresh, (short) bits))
-                print_result((short) scan, cols, refresh, (short) bits, calc.clk_mhz, calc.gclk_mhz, calc.brightness, calc.get_min_dot_correction_bits());
+                print_result((short) scan, cols, refresh, (short) bits, calc.clk_mhz, calc.gclk_mhz, calc.brightness, (short) 0);
             break;
         case 2:
             def calc = new GEN_2();

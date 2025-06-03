@@ -33,15 +33,24 @@ abstract class Panel_Calculator {
     public double max_gclk_mhz = 33.0;
     public short columns_per_driver = 16;
     public short fanout_per_clk = 6;
-    public short fanout_per_gclk = 6;
+    public short fanout_per_gclk = 1;
     public short max_impedance = 50;                   // For longer chains may need custom circuit board which adjusts this
-    public short max_par_cap_pf = 16;                  // For longer chains may need custom circuit board which adjusts this
+    public short max_par_cap_pf = 30;                  // For longer chains may need custom circuit board which adjusts this
     public short min_harmonics = 10;                   // This should be at least 10 for square waves
-    public short blank_time_us = 1;                    // For high refresh rate you may need to increase thi
+    public short blank_time_us = 1;                    // For high refresh rate you may need to increase this // TODO: remove
 
     // LED constants
-    public double min_dot_correction_accuracy = 0;     // Reserve bits for dot correction (optional)
-    public int max_led_impedance = 500;
-    public short max_led_cap_pf = 15;
+    public double min_dot_correction_accuracy = 0;     // Reserve bits for dot correction (optional) // TODO: remove remove
+    public int max_led_column_impedance = 500;
+    public int max_led_row_impedance = 5;
+    public int max_led_column_pullup = 1000;
+    public int max_led_row_pulldown = 10000;
+    public short max_led_cap_pf = 30;
     public short min_led_harmonics = 5;
+
+    // Multiplexer constants
+    public int max_multiplex_gate_pf = 200;
+    public int max_multiplex_discharge_impedance = 50;
+    public int max_multiplex_charge_impedance = 50;
+    public int min_multiplex_harmonics = 5;
 }
