@@ -1,5 +1,6 @@
 package LED_Panel_Setting_Calculator
 
+// TODO: Clean this up
 abstract class Panel_Calculator {
     public abstract boolean is_valid(short scan, int cols, int refresh, short bits);
 
