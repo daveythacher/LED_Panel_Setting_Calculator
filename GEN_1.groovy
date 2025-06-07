@@ -23,7 +23,7 @@ class GEN_1 extends Panel_Calculator {
         return is_clk_valid(scan, cols, refresh, bits, brightness) &&
             is_multiplex_valid(scan, refresh, bits) &&
             is_gclk_valid(Math.max(
-                (max_led_row_impedance * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0, 
+                (max_led_column_pullup * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0, 
                 (max_led_column_impedance * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0), 
                 scan, refresh, bits);
     }
