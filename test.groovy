@@ -2,10 +2,10 @@ package LED_Panel_Setting_Calculator
 
 // TODO: Clean this up
 
-LED_driver_generation = 1;
+LED_driver_generation = 2;
 result_counter = 0;
-scan_target = 4;
-cols_target = 8;
+scan_target = 0;
+cols_target = 0;
 refresh_target = 3000;
 bits_target = 0;
 
@@ -94,7 +94,7 @@ def process_gen() {
         case 2:
             def calc = new GEN_2();
             if (calc.is_valid((short) scan, cols, refresh, (short) bits))
-                print_result((short) scan, cols, refresh, (short) bits, calc.clk_mhz, calc.gclk_mhz, calc.brightness, calc.get_min_dot_correction_bits());
+                print_result((short) scan, cols, refresh, (short) bits, calc.clk_mhz, calc.gclk_mhz, calc.brightness, (short) 0);
             break;
         case 3:
             def calc = new GEN_3();
