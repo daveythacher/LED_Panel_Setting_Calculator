@@ -7,11 +7,11 @@ class GEN_1 extends Panel_Calculator {
             // Low side capacitors (Thru LEDs) - Turn on
             (max_led_column_impedance * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0 +
             // High side capacitors
-            (max_led_column_pullup * min_led_harmonics * max_led_cap_pf * cols) / 1000000.0
+            (max_led_row_impedance * min_led_harmonics * max_led_cap_pf * cols) / 1000000.0
         );
         double led_fall_us = Math.max(
             // Low side capacitors (Thru LEDs) - Turn off
-            (max_led_row_impedance * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0,
+            (max_led_column_pullup * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0,
             // High side capacitors
             (max_led_row_pulldown * min_led_harmonics * max_led_cap_pf * cols) / 1000000.0,
         );
