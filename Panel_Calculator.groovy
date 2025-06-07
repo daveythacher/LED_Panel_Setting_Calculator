@@ -11,7 +11,7 @@ abstract class Panel_Calculator {
     // Panel constants
     public double max_clk_mhz = 25.0;
     public double max_gclk_mhz = 33.0;
-    public short columns_per_driver = 16;
+    public short columns_per_driver = 8;
     public short fanout_per_clk = 8;
     public short fanout_per_gclk = 1;
     public short max_impedance = 50;                   // For longer chains may need custom circuit board which adjusts this

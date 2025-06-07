@@ -2,7 +2,7 @@ package LED_Panel_Setting_Calculator
 
 // TODO: Clean this up
 
-LED_driver_generation = 3;
+LED_driver_generation = 1;
 result_counter = 0;
 scan_target = 0;
 cols_target = 0;
@@ -46,7 +46,7 @@ def process_scan() {
 }
 
 def process_cols() {
-    cols_low = 16;
+    cols_low = new GEN_1().columns_per_driver;
     cols_high = 2048;
 
     if (cols_target != 0) {
