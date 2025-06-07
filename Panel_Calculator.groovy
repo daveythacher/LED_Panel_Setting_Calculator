@@ -42,7 +42,7 @@ abstract class Panel_Calculator {
 
     // LED constants
     public double min_dot_correction_accuracy = 0;     // Reserve bits for dot correction (optional) // TODO: remove remove
-    public int max_led_column_impedance = 500;
+    public int max_led_column_impedance = 980;
     public int max_led_row_impedance = 5;
     public int max_led_column_pullup = 1000;
     public int max_led_row_pulldown = 10000;
