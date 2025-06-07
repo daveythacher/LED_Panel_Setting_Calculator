@@ -4,7 +4,7 @@ package LED_Panel_Setting_Calculator
 
 LED_driver_generation = 1;
 result_counter = 0;
-scan_target = 8;
+scan_target = 4;
 cols_target = 8;
 refresh_target = 3000;
 bits_target = 0;

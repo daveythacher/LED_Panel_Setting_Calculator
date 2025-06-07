@@ -25,7 +25,7 @@ class GEN_1 extends Panel_Calculator {
             is_gclk_valid(Math.max(
                 (max_led_column_pullup * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0, 
                 (max_led_column_impedance * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0), 
-                scan, refresh, bits);
+                scan, refresh, bits, brightness);
     }
 
     // Check multiplexer and PMOS - Must complete in single GCLK
@@ -39,10 +39,11 @@ class GEN_1 extends Panel_Calculator {
     }
 
     // Check low side discharge - Must complete in single GCLK
-    private boolean is_gclk_valid(double uS, short scan, int refresh, short bits) {
+    private boolean is_gclk_valid(double uS, short scan, int refresh, short bits, double dimming) {
         double temp = 1000000.0 / refresh;
         temp /= 1 << bits;
         temp /= scan;
+        temp *= dimming;
 
         return temp > uS;
     }
