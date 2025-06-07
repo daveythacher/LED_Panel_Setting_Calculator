@@ -2,7 +2,7 @@ package LED_Panel_Setting_Calculator
 
 // TODO: Clean this up
 
-LED_driver_generation = 2;
+LED_driver_generation = 3;
 result_counter = 0;
 scan_target = 0;
 cols_target = 0;
@@ -15,7 +15,7 @@ int cols = 0;
 int refresh = 0;
 short bits = 0;
 
-def print_result(short scan, int cols, int refresh, short bits, double clk_mhz, double gclk_mhz, double brightness, short dc) {
+def print_result(short scan, int cols, int refresh, short bits, double clk_mhz, double gclk_mhz, double brightness) {
     if ((scan * 1) <= cols) {
         print "\t Columns: " << cols;
         print "\t Scan: " << (int) scan;
@@ -23,7 +23,7 @@ def print_result(short scan, int cols, int refresh, short bits, double clk_mhz, 
         print "\t Configuration: " << scan * 2 << "x" << cols;
         print "\t Refresh: " << refresh;
         print "\t BPP: " << (int) bits;
-        print "\t Grayscale: " << (1 << (dc + bits)) * scan;
+        print "\t Grayscale: " << (1 << bits) * scan;
         print "\t CLK (MHz): " << clk_mhz;
         if (gclk_mhz != 0.0)
             print "\t GCLK (MHz): " << gclk_mhz;
@@ -89,17 +89,17 @@ def process_gen() {
         case 1:
             def calc = new GEN_1();
             if (calc.is_valid((short) scan, cols, refresh, (short) bits))
-                print_result((short) scan, cols, refresh, (short) bits, calc.clk_mhz, calc.gclk_mhz, calc.brightness, (short) 0);
+                print_result((short) scan, cols, refresh, (short) bits, calc.clk_mhz, calc.gclk_mhz, calc.brightness);
             break;
         case 2:
             def calc = new GEN_2();
             if (calc.is_valid((short) scan, cols, refresh, (short) bits))
-                print_result((short) scan, cols, refresh, (short) bits, calc.clk_mhz, calc.gclk_mhz, calc.brightness, (short) 0);
+                print_result((short) scan, cols, refresh, (short) bits, calc.clk_mhz, calc.gclk_mhz, calc.brightness);
             break;
         case 3:
             def calc = new GEN_3();
             if (calc.is_valid((short) scan, cols, refresh, (short) bits))
-                print_result((short) scan, cols, refresh, (short) bits, calc.clk_mhz, calc.gclk_mhz, calc.brightness, calc.get_min_dot_correction_bits());
+                print_result((short) scan, cols, refresh, (short) bits, calc.clk_mhz, calc.gclk_mhz, calc.brightness);
             break;
         default:
             break;
