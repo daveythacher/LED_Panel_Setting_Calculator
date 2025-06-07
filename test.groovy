@@ -4,7 +4,7 @@ package LED_Panel_Setting_Calculator
 
 LED_driver_generation = 1;
 result_counter = 0;
-scan_target = 4;
+scan_target = 8;
 cols_target = 8;
 refresh_target = 3000;
 bits_target = 0;
@@ -16,7 +16,7 @@ int refresh = 0;
 short bits = 0;
 
 def print_result(short scan, int cols, int refresh, short bits, double clk_mhz, double gclk_mhz, double brightness, short dc) {
-    if ((scan * 2) <= cols) {
+    if ((scan * 1) <= cols) {
         print "\t Columns: " << cols;
         print "\t Scan: " << (int) scan;
         print "\t Pixels: " << scan * 2 * cols;

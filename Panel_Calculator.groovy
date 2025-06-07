@@ -47,7 +47,7 @@ abstract class Panel_Calculator {
     public int max_led_column_pullup = 1000;
     public int max_led_row_pulldown = 10000;
     public short max_led_cap_pf = 30;
-    public short min_led_harmonics = 5;
+    public short min_led_harmonics = 10;
 
     // Multiplexer constants
     public int max_multiplex_gate_pf = 200;
