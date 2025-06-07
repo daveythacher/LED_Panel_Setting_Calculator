@@ -28,7 +28,7 @@ class GEN_1 extends Panel_Calculator {
                 scan, refresh, bits);
     }
 
-    // Check multiplexer and PMOS
+    // Check multiplexer and PMOS - Must complete in single GCLK
     private boolean is_multiplex_valid(short scan, int refresh, short bits) {
         double clock_period_us = 1000000.0 / scan * refresh;
         double multiplex_rise_us = max_multiplex_charge_impedance * max_multiplex_gate_pf * min_multiplex_harmonics / 1000000.0;
@@ -47,7 +47,7 @@ class GEN_1 extends Panel_Calculator {
         return temp > uS;
     }
 
-    // Check Driver communications
+    // Check Driver communications - Find max clock and verify configuration
     private boolean is_clk_valid(short scan, int cols, int refresh, short bits, double dimming) {
         // Calculate number of LED drivers in series.
         double temp = cols / columns_per_driver;
