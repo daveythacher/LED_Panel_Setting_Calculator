@@ -5,7 +5,7 @@ class GEN_2 extends Panel_Calculator {
     public boolean is_valid(short scan, int cols, int refresh, short bits) {
         double led_rise_us = (
             // Low side capacitors (Thru LEDs) - Turn on
-            (max_led_column_impedance * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0 +
+            (led_rail_voltage / min_led_column_current * max_led_cap_pf * scan) / 1000000.0 +
             // High side capacitors
             (max_led_row_impedance * min_led_harmonics * max_led_cap_pf * cols) / 1000000.0
         );
@@ -24,7 +24,7 @@ class GEN_2 extends Panel_Calculator {
             is_multiplex_valid(scan, refresh, bits) &&
             is_gclk_valid(Math.max(
                 (max_led_column_pullup * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0, 
-                (max_led_column_impedance * min_led_harmonics * max_led_cap_pf * scan) / 1000000.0), 
+                (led_rail_voltage / min_led_column_current * max_led_cap_pf * scan) / 1000000.0), 
                 scan, cols, refresh, bits, brightness);
     }
 

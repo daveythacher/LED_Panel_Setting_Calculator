@@ -19,7 +19,8 @@ abstract class Panel_Calculator {
     public short min_harmonics = 10;                   // This should be at least 10 for square waves
 
     // LED constants
-    public int max_led_column_impedance = 980;
+    public double min_led_column_current = 0.0051;
+    public int led_rail_voltage = 5;
     public int max_led_row_impedance = 5;
     public int max_led_column_pullup = 1000;
     public int max_led_row_pulldown = 10000;
